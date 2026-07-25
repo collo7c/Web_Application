@@ -83,12 +83,6 @@ nav a:hover {
     box-shadow: 0 4px 10px rgba(231, 76, 60, 0.4);
 }
 
-/* Remove the pipe separators from HTML */
-nav a:not(:last-child)::after {
-    content: "";
-    display: none;
-}
-
 /* ===== Section & Container Styling ===== */
 section {
     background: #fff;
@@ -224,15 +218,6 @@ input[type="submit"]:hover {
     background: linear-gradient(135deg, #c0392b, #a93226);
 }
 
-/* Form spacing */
-form br {
-    display: none;
-}
-
-form > * {
-    margin-bottom: 15px;
-}
-
 /* ===== Footer ===== */
 footer {
     text-align: center;
@@ -361,6 +346,12 @@ footer {
     box-shadow: 0 6px 20px rgba(52, 152, 219, 0.5);
 }
 
+.btn-small {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    margin: 5px;
+}
+
 /* ===== Cards for content ===== */
 .card {
     background: #fff;
@@ -375,6 +366,71 @@ footer {
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+/* ===== JS Enhancement Styles ===== */
+.js-message {
+    background: #e8f0fe;
+    padding: 12px 20px;
+    border-radius: 30px;
+    margin: 15px 0;
+    border-left: 5px solid #e74c3c;
+}
+
+.toast {
+    background: #2c3e50;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 40px;
+    display: inline-block;
+    margin: 10px 0;
+}
+
+.hidden-content {
+    display: none;
+    background: #f1f9f9;
+    padding: 15px;
+    border-radius: 12px;
+    margin: 15px 0;
+    border: 1px dashed #3498db;
+}
+
+.highlight {
+    background-color: #ffeaa7 !important;
+    transition: 0.3s;
+}
+
+.card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.demo-card {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    flex: 1 1 150px;
+    border-left: 4px solid #e74c3c;
+    transition: 0.2s;
+    cursor: pointer;
+    text-align: center;
+    font-weight: 600;
+}
+
+.demo-card.active-card {
+    background: #fef9e7;
+    border-left-color: #f1c40f;
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+#formError {
+    color: #c0392b;
+    font-weight: 600;
+    margin: 10px 0;
 }
 
 /* ===== Responsive Design ===== */
