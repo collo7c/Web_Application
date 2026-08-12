@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>FitZone Gym - Registration</title>
-    <link rel="stylesheet" href="csslab.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -17,37 +17,41 @@
     <a href="gallery.html">Gallery</a>
 </nav>
 
-<form>
+<form id="registrationForm" action="process_registration.php" method="POST">
     <label>Full Name:</label>
-    <input type="text" placeholder="Enter your full name" required>
+    <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
 
     <label>Email Address:</label>
-    <input type="email" placeholder="Enter your email" required>
+    <input type="email" id="emailAddr" name="email" placeholder="Enter your email" required>
 
     <label>Phone Number:</label>
-    <input type="tel" placeholder="Enter your phone number" required>
+    <input type="tel" id="phoneNum" name="phone" placeholder="Enter your phone number" required>
 
     <label>Age:</label>
-    <input type="number" placeholder="Enter your age" min="10" max="100">
+    <input type="number" id="age" name="age" placeholder="Enter your age" min="10" max="100">
 
     <label>Gender:</label>
-    <input type="radio" name="gender" id="male"> <label for="male" style="display:inline;">Male</label>
-    <input type="radio" name="gender" id="female"> <label for="female" style="display:inline;">Female</label>
+    <input type="radio" name="gender" id="male" value="Male"> <label for="male" style="display:inline;">Male</label>
+    <input type="radio" name="gender" id="female" value="Female"> <label for="female" style="display:inline;">Female</label>
 
     <label>Select Membership Plan:</label>
-    <select>
-        <option>Basic - Ksh 2,000</option>
-        <option>Standard - Ksh 5,500</option>
-        <option>Premium - Ksh 18,000</option>
+    <select id="planSelect" name="plan">
+        <option value="">-- Choose a plan --</option>
+        <option value="Basic - Ksh 2,000">Basic - Ksh 2,000</option>
+        <option value="Standard - Ksh 5,500">Standard - Ksh 5,500</option>
+        <option value="Premium - Ksh 18,000">Premium - Ksh 18,000</option>
     </select>
 
     <label>Fitness Goals:</label>
-    <input type="checkbox" id="weight"> <label for="weight" style="display:inline;">Weight Loss</label>
-    <input type="checkbox" id="muscle"> <label for="muscle" style="display:inline;">Muscle Gain</label>
-    <input type="checkbox" id="fitness"> <label for="fitness" style="display:inline;">Improve Fitness</label>
+    <input type="checkbox" id="weight" name="goals[]" value="Weight Loss"> <label for="weight" style="display:inline;">Weight Loss</label>
+    <input type="checkbox" id="muscle" name="goals[]" value="Muscle Gain"> <label for="muscle" style="display:inline;">Muscle Gain</label>
+    <input type="checkbox" id="fitness" name="goals[]" value="Improve Fitness"> <label for="fitness" style="display:inline;">Improve Fitness</label>
 
     <label>Additional Comments:</label>
-    <textarea rows="5" placeholder="Any special requests or comments..."></textarea>
+    <textarea rows="5" id="comments" name="comments" placeholder="Any special requests or comments..."></textarea>
+
+    <div id="formError"></div>
+    <div id="confirmationToast"></div>
 
     <input type="submit" value="Register Now">
 </form>

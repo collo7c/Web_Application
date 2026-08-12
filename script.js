@@ -1,4 +1,3 @@
-
 // 1. WELCOME MESSAGE 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -86,8 +85,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (registrationForm) {
         registrationForm.addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent actual form submission
-            
             // Clear previous errors
             formError.textContent = '';
             formError.style.color = '#c0392b';
@@ -146,26 +143,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 plan.style.borderColor = '#ddd';
             }
             
-            // Display errors or success
+            // Display errors, or let the form continue on to process_registration.php
             if (!isValid) {
+                event.preventDefault(); // Only block submission when validation fails
                 formError.innerHTML = '❌ ' + errorMessages.join('<br>');
             } else {
                 formError.innerHTML = '';
                 formError.style.color = '#27ae60';
-                formError.innerHTML = '✅ Registration successful! Welcome to FitZone!';
-                
-                // Show success message in toast too
-                if (confirmationToast) {
-                    confirmationToast.innerHTML = '<div class="toast" style="background:#27ae60;">✅ Registration successful! Welcome to FitZone!</div>';
-                    setTimeout(function() {
-                        confirmationToast.innerHTML = '';
-                    }, 5000);
-                }
-                
+
                 // Reset border colors
                 document.querySelectorAll('input, select, textarea').forEach(function(el) {
                     el.style.borderColor = '#ddd';
                 });
+
+                // No preventDefault() here: the browser now submits the form
+                // via POST to process_registration.php, which does the real
+                // server-side validation, database insert, and confirmation.
             }
         });
     }
